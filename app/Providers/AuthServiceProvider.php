@@ -27,8 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // pour ne pas montionner les champs de tableaux dans le model 
-        Model::unguard();
-
+     
     }
 }
