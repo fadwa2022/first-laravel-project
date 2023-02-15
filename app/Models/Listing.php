@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Listing extends Model
 {
     use HasFactory;
+
+//     public static function find($id){
+//   $listings =self::all();
+//   foreach($listings as $listing)
+// {
+//     if($listing['id'] == $id)
+//     {
+//         return $listing;
+//     }
+// }
+//     }
+public function scopeFilter($query ,array $filters){
+if($filters['tag'] ?? false){
+    $query -> where('tags','like','%' . request('tag') . '%');
 }
+}
+}
+
