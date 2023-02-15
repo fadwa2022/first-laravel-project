@@ -12,6 +12,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <script src="//unpkg.com/alpinejs" defer></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -65,4 +66,4 @@ class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg
 <x-flash-message />
 </body>
 </html>
->
+
