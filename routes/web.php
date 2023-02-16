@@ -35,6 +35,8 @@ Route::post('/listings',[ListingController::class,'store']);
 Route::get('/listings/{listing}/edit',[ListingController::class,'edit']);
 // edit submit
 Route::put('/listings/{listing}',[ListingController::class,'update']);
+//delete listing
+Route::delete('/listings/{listing}',[ListingController::class,'destroy']);
 
 //single listing
 Route::get('/listings/{listing}',[ListingController::class,'show']);

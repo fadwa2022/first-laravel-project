@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Listing;
 // use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 
 
@@ -77,5 +78,9 @@ class ListingController extends Controller
         $listing->update($formFields);
 
         return back()->with('message','listing updated successfully');
+    }
+    public function  destroy (Listing $listing){
+       $listing->delete();
+       return Redirect('/')->with('message','listing deleted successfully');
     }
 }
