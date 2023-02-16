@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
+use GuzzleHttp\Middleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,15 +32,15 @@ use App\Http\Controllers\ListingController;
 //all listing
 Route::get('/', [ListingController::class, 'index']);
 // show create form
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->Middleware('auth');
 //store listings data
 Route::post('/listings',[ListingController::class,'store']);
 //show edit form
-Route::get('/listings/{listing}/edit',[ListingController::class,'edit']);
+Route::get('/listings/{listing}/edit',[ListingController::class,'edit'])->Middleware('auth');
 // edit submit
-Route::put('/listings/{listing}',[ListingController::class,'update']);
+Route::put('/listings/{listing}',[ListingController::class,'update'])->Middleware('auth');
 //delete listing
-Route::delete('/listings/{listing}',[ListingController::class,'destroy']);
+Route::delete('/listings/{listing}',[ListingController::class,'destroy'])->Middleware('auth');
 
 //single listing
 Route::get('/listings/{listing}',[ListingController::class,'show']);
@@ -47,4 +49,8 @@ Route::get('/listings/{listing}',[ListingController::class,'show']);
 Route::get('/register',[UserController::class,'create']);
 //dtore user
 Route::post('/users', [UserController::class, 'store']);
-
+// logout
+Route::post('/logout',[UserController::class,'logout'])->Middleware('auth');
+//show login form
+Route::get('/login',[UserController::class,'createlogin'])->name('login');
+Route::post('/users/authenticate',[UserController::class,'authenticate']);
