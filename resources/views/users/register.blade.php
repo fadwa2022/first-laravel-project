@@ -40,9 +40,7 @@
                     @enderror
 
             <!-- Error Example -->
-            <p class="text-red-500 text-xs mt-1">
-                Please enter a valid email
-            </p>
+        
         </div>
 
         <div class="mb-6">
