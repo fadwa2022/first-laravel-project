@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
-// use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 
 
@@ -50,6 +47,7 @@ class ListingController extends Controller
         if($request->hasFile('logo')){
             $formFields['logo'] = $request->file('logo')->store('logos','public');
         }
+        $formFields['user_id'] = auth()->id();
         Listing::create($formFields);
 
         return redirect('/')->with('message','listing created successfully');
@@ -82,5 +80,9 @@ class ListingController extends Controller
     public function  destroy (Listing $listing){
        $listing->delete();
        return Redirect('/')->with('message','listing deleted successfully');
+    }
+    // Manage Listings
+    public function manage() {
+        return view('listings\manage', ['listings' => auth()->user()->listings()->get()]);
     }
 }

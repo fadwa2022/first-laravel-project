@@ -45,7 +45,7 @@ class UserController extends Controller
     }
 
     // Show Login Form
-    public function createlogin() {
+    public function login() {
         return view('users/login');
     }
 
